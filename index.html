@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ankesh Prasad — Principal Consultant</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0f0e0c; --cream: #f7f3ee; --warm: #e8e0d5;
+    --gold: #c9a84c; --muted: #7a7060; --accent: #2a1f0e;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1000; opacity: 0.4;
+  }
+
+  /* HEADER */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center;
+    background: rgba(247,243,238,0.88); backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); text-decoration: none; }
+  nav { display: flex; gap: 2rem; }
+  nav a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  nav a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; }
+  .hero-left { padding: 6rem 4rem 4rem 5rem; display: flex; flex-direction: column; justify-content: center; }
+  .eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
+  .eyebrow-line { width: 40px; height: 1px; background: var(--gold); }
+  .eyebrow span { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 5rem); line-height: 1.05; font-weight: 900; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+  h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub { font-size: 1rem; line-height: 1.8; color: var(--muted); max-width: 440px; margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s ease 0.8s forwards; }
+  .btn-primary { padding: 0.9rem 2.2rem; background: var(--ink); color: var(--cream); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; text-decoration: none; border: 2px solid var(--ink); transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+  .btn-primary:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .btn-secondary { padding: 0.9rem 2.2rem; background: transparent; color: var(--ink); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; text-decoration: none; border: 2px solid rgba(15,14,12,0.25); transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-right { position: relative; display: flex; align-items: center; justify-content: center; padding: 4rem 3rem; }
+  .hero-visual { position: relative; width: 100%; max-width: 440px; }
+  .card-big { background: var(--accent); color: var(--cream); padding: 3.5rem; position: relative; overflow: hidden; opacity: 0; animation: fadeIn 1s ease 0.5s forwards; }
+  .card-big::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: var(--gold); border-radius: 50%; opacity: 0.08; }
+  .card-big::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 140px; height: 140px; border: 2px solid var(--gold); border-radius: 50%; opacity: 0.15; }
+  .card-big .num { font-family: 'Playfair Display', serif; font-size: 4.5rem; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 0.25rem; }
+  .card-big .label { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,243,238,0.5); margin-bottom: 2.5rem; }
+  .card-big .divider { width: 100%; height: 1px; background: rgba(201,168,76,0.25); margin-bottom: 2.5rem; }
+  .industries { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .industry-tag { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.75rem; border: 1px solid rgba(201,168,76,0.3); color: rgba(247,243,238,0.65); font-weight: 400; }
+  .floating-stat { position: absolute; background: var(--cream); border: 1px solid rgba(201,168,76,0.3); padding: 1.25rem 1.5rem; box-shadow: 0 20px 60px rgba(15,14,12,0.12); }
+  .floating-stat.s1 { bottom: -20px; right: -30px; opacity: 0; animation: fadeUp 0.8s ease 1s forwards; }
+  .floating-stat .s-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; line-height: 1; }
+  .floating-stat .s-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.25rem; }
+
+  /* SECTIONS */
+  section { padding: 6rem 5rem; }
+  .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 3.5rem; }
+  .section-header .sh-line { width: 30px; height: 2px; background: var(--gold); }
+  .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; }
+  .section-header .sh-num { margin-left: auto; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+
+  /* ABOUT */
+  .about { background: var(--warm); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .about-text p { font-size: 1.05rem; line-height: 1.9; color: #3a3530; margin-bottom: 1.5rem; }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-text strong { font-weight: 500; color: var(--ink); }
+  .skills-block { display: grid; gap: 1rem; }
+  .skill-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; background: var(--cream); border-left: 3px solid transparent; transition: border-color 0.3s; }
+  .skill-item:hover { border-color: var(--gold); }
+  .skill-icon { width: 36px; height: 36px; background: var(--ink); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .skill-icon svg { width: 16px; height: 16px; fill: var(--gold); }
+  .skill-text { font-size: 0.85rem; font-weight: 500; color: var(--ink); }
+
+  /* PROJECTS */
+  .projects { background: var(--cream); }
+  .projects-filter { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .filter-btn { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.45rem 1rem; border: 1px solid rgba(15,14,12,0.18); background: transparent; color: var(--muted); cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; font-weight: 500; }
+  .filter-btn:hover, .filter-btn.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .project-card { background: var(--warm); border: 1px solid rgba(15,14,12,0.07); cursor: pointer; transition: all 0.3s; }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 24px 50px rgba(15,14,12,0.1); }
+  .project-card:hover .pc-arrow { transform: translateX(4px); }
+  .pc-top { padding: 2rem 2rem 1.5rem; }
+  .pc-industry { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1rem; }
+  .pc-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.75rem; }
+  .pc-hook { font-size: 0.85rem; line-height: 1.65; color: #5a5248; }
+  .pc-bottom { padding: 1.25rem 2rem; border-top: 1px solid rgba(15,14,12,0.08); display: flex; justify-content: space-between; align-items: center; }
+  .pc-tag { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.6rem; background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.25); }
+  .pc-arrow { font-size: 1rem; color: var(--muted); transition: transform 0.2s; }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(15,14,12,0.72); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 2rem; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--cream); max-width: 720px; width: 100%; max-height: 85vh; overflow-y: auto; animation: fadeUp 0.3s ease; }
+  .modal-header { background: var(--accent); color: var(--cream); padding: 2.5rem 3rem; position: sticky; top: 0; z-index: 10; }
+  .modal-industry { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+  .modal-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; line-height: 1.2; }
+  .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(255,255,255,0.1); border: none; color: var(--cream); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.2rem; transition: background 0.2s; }
+  .modal-close:hover { background: rgba(255,255,255,0.2); }
+  .modal-body { padding: 2.5rem 3rem; }
+  .modal-body p { font-size: 0.95rem; line-height: 1.85; color: #3a3530; margin-bottom: 1.25rem; }
+  .modal-body p:last-child { margin-bottom: 0; }
+  .modal-role-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin: 1.75rem 0 0.5rem; border-top: 1px solid rgba(201,168,76,0.2); padding-top: 1.5rem; }
+
+  /* EXPERIENCE */
+  .experience { background: var(--warm); }
+  .exp-list { display: grid; gap: 0; }
+  .exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid rgba(15,14,12,0.08); }
+  .exp-item:first-child { padding-top: 0; }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-period { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 0.5rem; }
+  .exp-company { font-size: 0.8rem; color: var(--muted); }
+  .exp-role { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .exp-desc { font-size: 0.88rem; line-height: 1.8; color: #5a5248; }
+  .exp-badge { display: inline-block; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.2rem 0.6rem; background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); margin-top: 0.75rem; }
+
+  /* CONTACT */
+  .contact { background: var(--accent); color: var(--cream); }
+  .contact .section-header h2 { color: var(--cream); }
+  .contact .sh-line { background: var(--gold); }
+  .contact .sh-num { color: rgba(247,243,238,0.4); }
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .contact-headline { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 3rem); line-height: 1.2; color: var(--cream); }
+  .contact-headline em { color: var(--gold); font-style: italic; }
+  .contact-sub { font-size: 0.95rem; line-height: 1.8; color: rgba(247,243,238,0.55); margin-top: 1.25rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 1.25rem; }
+  .contact-link { display: flex; align-items: center; gap: 1rem; text-decoration: none; padding: 1.25rem 1.5rem; border: 1px solid rgba(201,168,76,0.2); color: var(--cream); transition: all 0.3s; position: relative; overflow: hidden; }
+  .contact-link::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: rgba(201,168,76,0.1); transition: width 0.3s; }
+  .contact-link:hover::before { width: 100%; }
+  .contact-link:hover { border-color: rgba(201,168,76,0.5); }
+  .cl-icon { width: 36px; height: 36px; background: rgba(201,168,76,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .cl-icon svg { width: 16px; height: 16px; fill: var(--gold); }
+  .cl-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,243,238,0.4); margin-bottom: 0.15rem; }
+  .cl-value { font-size: 0.88rem; color: var(--cream); }
+
+  /* FOOTER */
+  footer { background: var(--ink); padding: 1.5rem 5rem; display: flex; justify-content: space-between; align-items: center; }
+  footer .f-name { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: rgba(247,243,238,0.5); }
+  footer .f-copy { font-size: 0.72rem; letter-spacing: 0.08em; color: rgba(247,243,238,0.25); }
+
+  /* PROFILE PHOTO PLACEHOLDER */
+  .profile-photo-placeholder {
+    width: 100%; aspect-ratio: 3/4; max-width: 340px;
+    background: var(--warm);
+    border: 2px dashed rgba(201,168,76,0.4);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.75rem; color: var(--muted); position: relative; cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .profile-photo-placeholder:hover { border-color: var(--gold); }
+  .profile-photo-placeholder svg { width: 40px; height: 40px; opacity: 0.35; }
+  .profile-photo-placeholder .ph-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.5; }
+  .profile-photo-placeholder .ph-sub { font-size: 0.65rem; opacity: 0.35; }
+  .profile-photo-placeholder input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .profile-photo-placeholder img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; }
+  .profile-photo-placeholder.has-image img { display: block; }
+  .profile-photo-placeholder.has-image svg,
+  .profile-photo-placeholder.has-image .ph-label,
+  .profile-photo-placeholder.has-image .ph-sub { display: none; }
+
+  /* HERO PHOTO � small floating avatar */
+  .hero-avatar {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--warm); border: 2px dashed rgba(201,168,76,0.45);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.75rem; overflow: hidden; position: relative; cursor: pointer;
+    flex-shrink: 0;
+  }
+  .hero-avatar svg { width: 28px; height: 28px; fill: var(--muted); opacity: 0.4; }
+  .hero-avatar input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* COMPANY LOGO PLACEHOLDER */
+  .company-logo {
+    width: 44px; height: 44px; background: var(--cream);
+    border: 1.5px dashed rgba(15,14,12,0.2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; overflow: hidden; position: relative; cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .company-logo:hover { border-color: var(--gold); }
+  .company-logo svg { width: 18px; height: 18px; fill: var(--muted); opacity: 0.3; }
+  .company-logo input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+  .company-logo img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+  .company-logo--bizz { background: #0f0e0c; border-color: rgba(201,168,76,0.35); }
+  .company-logo--bizz img { padding: 2px; filter: brightness(0) invert(1) contrast(1.2); }
+  .exp-meta-inner { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+
+  /* PROJECT CARD IMAGE PLACEHOLDER */
+  .pc-image {
+    width: 100%; aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, var(--warm) 0%, #d9cfc4 100%);
+    border-bottom: 1px solid rgba(15,14,12,0.07);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; cursor: pointer;
+  }
+  .pc-image:hover .pc-img-overlay { opacity: 1; }
+  .pc-image svg { width: 32px; height: 32px; fill: var(--muted); opacity: 0.25; }
+  .pc-img-label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); opacity: 0.4; margin-top: 0.4rem; }
+  .pc-img-overlay {
+    position: absolute; inset: 0; background: rgba(201,168,76,0.08);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .pc-img-overlay span { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .pc-image input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .pc-image img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+  .pc-image--contain img { object-fit: contain; padding: 0.75rem; }
+
+  /* MODAL CLIENT LOGO */
+  .modal-logo {
+    width: 110px; height: 62px; background: #fff;
+    border: 1.5px solid rgba(201,168,76,0.45);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem; position: relative; overflow: hidden;
+  }
+  .modal-logo svg { width: 22px; height: 22px; fill: rgba(42,31,14,0.28); }
+  .modal-logo img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+
+  /* ABOUT PHOTO LAYOUT */
+  .about-grid { display: grid; grid-template-columns: 260px 1fr 1fr; gap: 4rem; align-items: start; }
+  .about-photo-col { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .about-photo-hint { font-size: 0.68rem; letter-spacing: 0.08em; color: var(--muted); opacity: 0.6; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes slideInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes scaleIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
+  @keyframes lineGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* SCROLL PROGRESS BAR */
+  #scroll-progress {
+    position: fixed; top: 0; left: 0; height: 2px; z-index: 999;
+    background: var(--gold); width: 0%; transition: width 0.1s linear;
+    transform-origin: left;
+  }
+
+  /* CURSOR */
+  #cursor-dot {
+    position: fixed; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold); pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%); transition: transform 0.1s, opacity 0.2s;
+  }
+  #cursor-ring {
+    position: fixed; width: 36px; height: 36px; border-radius: 50%;
+    border: 1.5px solid rgba(201,168,76,0.5); pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%); transition: all 0.18s ease;
+  }
+  body:not(:hover) #cursor-dot, body:not(:hover) #cursor-ring { opacity: 0; }
+  .cursor-hover #cursor-ring { transform: translate(-50%,-50%) scale(2.2); border-color: var(--gold); background: rgba(201,168,76,0.07); }
+  .cursor-click #cursor-dot { transform: translate(-50%,-50%) scale(0.5); }
+
+  /* SCROLL REVEAL — base state */
+  .reveal {
+    opacity: 0; transform: translateY(36px);
+    transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.reveal-left { transform: translateX(-40px); }
+  .reveal.reveal-right { transform: translateX(40px); }
+  .reveal.reveal-scale { transform: scale(0.94); }
+  .reveal.in-view { opacity: 1; transform: none !important; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+  .reveal-delay-6 { transition-delay: 0.6s; }
+
+  /* HERO PARALLAX LAYER */
+  .hero-right { will-change: transform; }
+
+  /* SECTION DIVIDER LINE */
+  .section-header .sh-line {
+    transform-origin: left; animation: none;
+  }
+  .section-header.in-view .sh-line {
+    animation: lineGrow 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+
+  /* SKILL ITEMS stagger animation override */
+  .skill-item { transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
+  .skill-item:hover { transform: translateX(6px); box-shadow: -3px 0 0 var(--gold); border-left-color: var(--gold); }
+
+  /* PROJECT CARD enhanced hover */
+  .project-card {
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+    will-change: transform;
+  }
+  .project-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 32px 64px rgba(15,14,12,0.14); }
+
+  /* EXP ITEM hover */
+  .exp-item { transition: background 0.3s, padding-left 0.3s; border-radius: 0; position: relative; }
+  .exp-item::before {
+    content: ''; position: absolute; left: -5rem; top: 0; bottom: 0; width: 3px;
+    background: var(--gold); transform: scaleY(0); transform-origin: top;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .exp-item:hover::before { transform: scaleY(1); }
+  .exp-item:hover { background: rgba(201,168,76,0.04); }
+
+  /* HERO AMBIENT ORB */
+  .hero-orb {
+    position: absolute; border-radius: 50%; pointer-events: none;
+    filter: blur(80px); opacity: 0.12; animation: orbFloat 8s ease-in-out infinite;
+  }
+  .hero-orb-1 { width: 400px; height: 400px; background: var(--gold); top: -100px; right: -100px; animation-delay: 0s; }
+  .hero-orb-2 { width: 300px; height: 300px; background: #c9a84c; bottom: 0; left: -60px; animation-delay: 3s; }
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(20px, -30px) scale(1.05); }
+    66% { transform: translate(-15px, 20px) scale(0.97); }
+  }
+
+  /* CONTACT SECTION magnetic particles */
+  .contact { position: relative; overflow: hidden; }
+  .contact-particle {
+    position: absolute; border-radius: 50%; pointer-events: none;
+    background: rgba(201,168,76,0.15); animation: particleDrift linear infinite;
+  }
+  @keyframes particleDrift {
+    0% { transform: translateY(100%) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* GRADIENT MESH background on hero */
+  .hero { position: relative; overflow: hidden; }
+  .hero-mesh {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 40%, rgba(201,168,76,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 70%, rgba(42,31,14,0.05) 0%, transparent 60%);
+  }
+  .hero-left, .hero-right { position: relative; z-index: 1; }
+
+  /* NAV link underline animation */
+  nav a { position: relative; }
+  nav a::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px;
+    background: var(--gold); transition: width 0.3s ease;
+  }
+  nav a:hover::after { width: 100%; }
+
+  /* BTN shimmer */
+  .btn-primary { position: relative; overflow: hidden; }
+  .btn-primary::after {
+    content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transform: skewX(-20deg); transition: left 0.5s ease;
+  }
+  .btn-primary:hover::after { left: 140%; }
+
+  /* SECTION transition accent line */
+  section { position: relative; }
+
+  /* NUMBERS count animation state */
+  .count-num { display: inline-block; }
+
+  /* ABOUT PHOTO parallax */
+  .profile-photo-placeholder { transition: transform 0.3s ease; }
+
+  @media (max-width: 1100px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 900px) {
+    header { padding: 1.25rem 1.5rem; } nav { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 6rem 1.5rem 2rem; } .hero-right { padding: 2rem 1.5rem 4rem; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem; text-align: center; }
+    .modal { max-height: 90vh; } .modal-header, .modal-body { padding: 2rem 1.5rem; }
+  }
+  /* ─── FLOW FIELD CANVAS ─── */
+  #flow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9997;
+    opacity: 1;
+    mix-blend-mode: screen;
+  }
+</style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<canvas id="flow-canvas"></canvas>
+
+<header>
+  <a class="logo" href="#">Ankesh Prasad</a>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:80px;padding-bottom:0;">
+  <div class="hero-mesh"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-left">
+    <div class="eyebrow"><div class="eyebrow-line"></div><span>Principal Consultant · India & US Markets</span></div>
+    <h1>Growth that<br>scales without<br><em>chaos.</em></h1>
+
+    <p class="hero-sub">I work with founders and leadership teams to build execution-led growth engines — spanning go-to-market, market expansion, revenue architecture, and operational discipline.</p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">See My Work</a>
+      <a href="#contact" class="btn-secondary">Let's Talk</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="card-big">
+        <div class="num">34+</div>
+        <div class="label">Consulting engagements led</div>
+        <div class="divider"></div>
+        <div class="industries">
+          <span class="industry-tag">Manufacturing</span><span class="industry-tag">D2C</span>
+          <span class="industry-tag">B2B</span><span class="industry-tag">EdTech</span>
+          <span class="industry-tag">Solar</span><span class="industry-tag">F&B</span>
+          <span class="industry-tag">Hospitality</span><span class="industry-tag">Services</span>
+        </div>
+      </div>
+      <div class="floating-stat s1"><div class="s-num">7+</div><div class="s-label">Years of experience</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-header reveal"><div class="sh-line"></div><h2>About</h2><span class="sh-num">01</span></div>
+  <div class="about-grid">
+    <div class="about-photo-col reveal reveal-left">
+      <div class="profile-photo-placeholder has-image" aria-label="Ankesh Prasad photo">
+        <img src="about-photo.jpg" alt="Ankesh Prasad photo">
+      </div>
+    </div>
+    <div class="about-text reveal reveal-delay-2">
+      <p>Most businesses don't struggle because of lack of ideas. They struggle when <strong>growth outpaces systems</strong>.</p>
+      <p>Over the last 7+ years, I've operated across manufacturing, D2C, B2B, EdTech, hospitality, solar, F&B, and services — combining consulting rigor with hands-on execution, including multi-industry engagements and exposure to <strong>US market expansion</strong> and partner-led growth models.</p>
+      <p>I operate at the intersection of strategy and execution, working closely with founders and CXOs who are navigating complexity at scale — so growth becomes predictable instead of chaotic.</p>
+    </div>
+    <div class="skills-block reveal reveal-right reveal-delay-3">
+      <div class="skill-item"><div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7L2 14l10 5 10-5-10-5z"/></svg></div><span class="skill-text">Strategic Thinking & Problem Solving</span></div>
+      <div class="skill-item"><div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm2 2h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg></div><span class="skill-text">Data Analysis & Interpretation</span></div>
+      <div class="skill-item"><div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></div><span class="skill-text">Communication & Presentation</span></div>
+      <div class="skill-item"><div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div><span class="skill-text">Go-To-Market Strategy</span></div>
+      <div class="skill-item"><div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div><span class="skill-text">Revenue Architecture & Systems</span></div>
+      <div class="skill-item"><div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div><span class="skill-text">Team Building & Operational Leadership</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-header reveal"><div class="sh-line"></div><h2>Case Studies</h2><span class="sh-num">02</span></div>
+  <div class="projects-filter reveal reveal-delay-1">
+    <button class="filter-btn active" data-filter="all">All Industries</button>
+    <button class="filter-btn" data-filter="Manufacturing">Manufacturing</button>
+    <button class="filter-btn" data-filter="Solar">Solar & Energy</button>
+    <button class="filter-btn" data-filter="D2C">D2C & Consumer</button>
+    <button class="filter-btn" data-filter="Media">Media & Lifestyle</button>
+    <button class="filter-btn" data-filter="Health">Health & Wellness</button>
+    <button class="filter-btn" data-filter="B2B">B2B Services</button>
+  </div>
+  <div class="projects-grid" id="projectsGrid">
+
+    <div class="project-card reveal reveal-scale reveal-delay-1" data-category="Health" onclick="openModal('bhim')">
+      <div class="pc-image pc-image--contain">
+        <img src="bhim-logo.png" alt="B-Him Medico logo">
+      </div>
+      <div class="pc-top">
+        <div class="pc-industry">Men's Health &amp; Sexual Wellness</div>
+        <div class="pc-title">B-Him Medico</div>
+        <div class="pc-hook">Built a go-to-market and brand architecture for a clinician-founded wellness platform where trust and medical credibility outweigh aggressive marketing.</div>
+      </div>
+      <div class="pc-bottom"><span class="pc-tag">Brand · GTM · Execution Systems</span><span class="pc-arrow">→</span></div>
+    </div>
+
+    <div class="project-card reveal reveal-scale reveal-delay-2" data-category="Manufacturing" onclick="openModal('bhavya')">
+      <div class="pc-image pc-image--contain">
+        <img src="bhavya-logo.png" alt="Bhavya Plast logo">
+      </div>
+      <div class="pc-top">
+        <div class="pc-industry">Plastic &amp; Packaging Manufacturing</div>
+        <div class="pc-title">Bhavya Plast</div>
+        <div class="pc-hook">Enabled structured South India market entry, replacing opportunistic outreach with a disciplined expansion framework built on demand clarity and execution readiness.</div>
+      </div>
+      <div class="pc-bottom"><span class="pc-tag">Market Expansion · Sales Structure</span><span class="pc-arrow">→</span></div>
+    </div>
+
+    <div class="project-card reveal reveal-scale reveal-delay-3" data-category="Media" onclick="openModal('hello')">
+      <div class="pc-image pc-image--contain">
+        <img src="hello-fitness-logo.png" alt="Hello Fitness logo">
+      </div>
+      <div class="pc-top">
+        <div class="pc-industry">Digital Media, Fitness &amp; Lifestyle</div>
+        <div class="pc-title">Hello Fitness Magazine</div>
+        <div class="pc-hook">Transformed a content brand with strong local recall but inconsistent revenue into a commercially viable media platform with a structured advertising model.</div>
+      </div>
+      <div class="pc-bottom"><span class="pc-tag">Revenue Model · Commercial Growth</span><span class="pc-arrow">→</span></div>
+    </div>
+
+    <div class="project-card reveal reveal-scale reveal-delay-1" data-category="B2B" onclick="openModal('house')">
+      <div class="pc-image pc-image--contain">
+        <img src="house-logo.png" alt="House of Connect logo">
+      </div>
+      <div class="pc-top">
+        <div class="pc-industry">CCTV, Home Automation &amp; Security</div>
+        <div class="pc-title">House of Connect</div>
+        <div class="pc-hook">Designed growth architecture for a brand posting 100% YoY growth — aligning demand generation, sales, and team execution to sustain scale without operational chaos.</div>
+      </div>
+      <div class="pc-bottom"><span class="pc-tag">Growth Architecture · Sales Ops</span><span class="pc-arrow">→</span></div>
+    </div>
+
+    <div class="project-card reveal reveal-scale reveal-delay-2" data-category="Solar" onclick="openModal('kiran')">
+      <div class="pc-image pc-image--contain">
+        <img src="kiran-logo.png" alt="Kiran Solar logo">
+      </div>
+      <div class="pc-top">
+        <div class="pc-industry">Solar EPC</div>
+        <div class="pc-title">Kiran Solar</div>
+        <div class="pc-hook">Built a performance-led demand generation engine for a solar EPC company, ensuring digital activity translated into commercial outcomes — not just visibility.</div>
+      </div>
+      <div class="pc-bottom"><span class="pc-tag">Demand Generation · Conversion</span><span class="pc-arrow">→</span></div>
+    </div>
+
+    <div class="project-card reveal reveal-scale reveal-delay-3" data-category="Solar" onclick="openModal('macwin')">
+      <div class="pc-image pc-image--contain">
+        <img src="macwin-logo.png" alt="Macwin Solar Energy logo">
+      </div>
+      <div class="pc-top">
+        <div class="pc-industry">Solar Panel Manufacturing</div>
+        <div class="pc-title">Macwin Solar Energy</div>
+        <div class="pc-hook">Repositioned a technically strong solar manufacturer around a unified growth narrative — moving from fragmented marketing to a predictable, system-led revenue approach.</div>
+      </div>
+      <div class="pc-bottom"><span class="pc-tag">Repositioning · Revenue Systems</span><span class="pc-arrow">→</span></div>
+    </div>
+
+    <div class="project-card reveal reveal-scale reveal-delay-1" data-category="D2C" onclick="openModal('mnicubs')">
+      <div class="pc-image pc-image--contain">
+        <img src="mnicubs-logo.png" alt="Mnicubs logo">
+      </div>
+      <div class="pc-top">
+        <div class="pc-industry">Toys &amp; Baby Products (Manufacturing + D2C)</div>
+        <div class="pc-title">Mnicubs Baby Products</div>
+        <div class="pc-hook">Strengthened the revenue engine of a national ride-on toy brand, aligning channels and performance tracking to reduce founder dependency and enable structured scaling.</div>
+      </div>
+      <div class="pc-bottom"><span class="pc-tag">Revenue Engine · Market Expansion</span><span class="pc-arrow">→</span></div>
+    </div>
+
+    <div class="project-card reveal reveal-scale reveal-delay-2" data-category="Manufacturing" onclick="openModal('rms')">
+      <div class="pc-image pc-image--contain">
+        <img src="rms-logo.png" alt="RMS Engineers logo">
+      </div>
+      <div class="pc-top">
+        <div class="pc-industry">Industrial Machinery &amp; Lifting Equipment</div>
+        <div class="pc-title">RMS Engineers</div>
+        <div class="pc-hook">Supported regional expansion strategy and demand-generation alignment for a pan-India B2B machinery manufacturer — enabling consistent execution across distributed markets.</div>
+      </div>
+      <div class="pc-bottom"><span class="pc-tag">B2B Expansion · Sales Structuring</span><span class="pc-arrow">→</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="section-header reveal"><div class="sh-line"></div><h2>Experience</h2><span class="sh-num">03</span></div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-meta-inner">
+          <div class="company-logo company-logo--bizz"><img src="bizzbuild-logo.png" alt="BizzBuild Consulting logo"></div>
+          <div class="exp-period">2023 – Present</div>
+        </div>
+        <div class="exp-company">BizzBuild Consulting</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Principal Consultant</div>
+        <div class="exp-desc">Leading multi-industry consulting engagements across strategy, growth, sales, and operations. Advising founders and leadership teams on market expansion, team structuring, and revenue acceleration. 34+ engagements across heavy machinery, manufacturing, D2C, solar, F&B, and services.</div>
+        <span class="exp-badge">Current Role</span>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-meta-inner">
+          <div class="company-logo"><img src="oyo-logo.png" alt="OYO logo"></div>
+          <div class="exp-period">2023 – 2024</div>
+        </div>
+        <div class="exp-company">OYO USA</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Business Development Manager</div>
+        <div class="exp-desc">Led business development and market expansion for OYO USA, onboarding independent hotels and hospitality partners across key US markets. Owned end-to-end partner lifecycle — lead generation, commercial discussions, onboarding, and revenue growth.</div>
+        <span class="exp-badge">US Market</span>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-meta-inner">
+          <div class="company-logo"><img src="byjus-logo.png" alt="BYJU'S logo"></div>
+          <div class="exp-period">2021 – 2022</div>
+        </div>
+        <div class="exp-company">BYJU'S</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Sr. Business Development Associate</div>
+        <div class="exp-desc">Drove revenue growth through counselling, student relationship management, and direct sales conversion in a high-velocity EdTech environment.</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-meta-inner">
+          <div class="company-logo"><img src="nobroker-logo.avif" alt="NoBroker logo"></div>
+          <div class="exp-period">2020 – 2021</div>
+        </div>
+        <div class="exp-company">NoBroker.com</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Team Manager, Lead Sourcing</div>
+        <div class="exp-desc">Managed a 10-person inside sales team. Led business analytics, B2C strategy, and revenue development while maintaining performance metrics and a high-output communication culture.</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-meta-inner">
+          <div class="company-logo"><img src="inkd-logo.png" alt="Inkd Stores logo"></div>
+          <div class="exp-period">2016 – 2020</div>
+        </div>
+        <div class="exp-company">Ink'd Custom Merchandising</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">CEO &amp; Founder</div>
+        <div class="exp-desc">Founded and scaled a custom merchandise and branding services company in New Delhi — offering printing, manufacturing, promotional gifts, and event supplies to businesses across India.</div>
+        <span class="exp-badge">Founder</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div id="contact-particles"></div>
+  <div class="section-header reveal"><div class="sh-line"></div><h2>Let's Connect</h2><span class="sh-num">04</span></div>
+  <div class="contact-inner">
+    <div class="reveal reveal-left">
+      <div class="contact-headline">If you're building something, let's talk about <em>scale.</em></div>
+      <p class="contact-sub">Whether you need clarity on go-to-market, revenue systems, or team architecture — I'd love to understand your challenges and explore how we might work together.</p>
+    </div>
+    <div class="contact-links reveal reveal-right reveal-delay-2">
+      <a href="mailto:ankesh_prasad@hotmail.com" class="contact-link">
+        <div class="cl-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+        <div><div class="cl-label">Email</div><div class="cl-value">ankesh_prasad@hotmail.com</div></div>
+      </a>
+      <a href="tel:+917888967448" class="contact-link">
+        <div class="cl-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+        <div><div class="cl-label">Phone</div><div class="cl-value">+91 78889 67448</div></div>
+      </a>
+      <a href="https://www.linkedin.com/in/ankeshprasad" target="_blank" class="contact-link">
+        <div class="cl-icon"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></div>
+        <div><div class="cl-label">LinkedIn</div><div class="cl-value">linkedin.com/in/ankeshprasad</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+  <span class="f-name">Ankesh Prasad — Principal Consultant</span>
+  <span class="f-copy">Greater Surat Area, India</span>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal" id="modalBox">
+    <div class="modal-header" id="modalHeader">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-logo" id="modalLogo">
+        <svg viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9z"/></svg>
+        
+      </div>
+      <div class="modal-industry" id="modalIndustry"></div>
+      <div class="modal-title" id="modalTitle"></div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+const projects = {
+  bhim: {
+    industry: "Men's Health & Sexual Wellness",
+    title: "B-Him Medico",
+    content: `<p>B-Him is a men's sexual wellness platform founded by a Psychiatrist and a Neurosurgeon, operating in a category where trust, sensitivity, and medical credibility are far more important than aggressive marketing. The engagement began at zero — no brand, no demand engine, and no defined go-to-market structure.</p>
+    <div class="modal-role-label">Engagement Overview</div>
+    <p>My role was to build the business from scratch, starting with market understanding and category positioning. The first priority was establishing a credible brand narrative that balanced clinical authority with approachability, while navigating ethical and regulatory sensitivities inherent to the space. This required careful alignment between medical positioning, customer communication, and growth objectives.</p>
+    <p>From there, I worked on go-to-market design, demand generation strategy, and sales execution frameworks. Instead of volume-driven acquisition, the focus was on high-intent demand, structured consultations, and trust-led conversion journeys. Operating models were created to ensure consistent experience delivery across marketing, sales, and patient interactions.</p>
+    <p>The engagement also involved setting up internal processes, performance metrics, and execution discipline — ensuring the platform could scale without compromising medical integrity. This project required a nuanced blend of strategy, execution, and judgment, making it one of the most complex and high-trust mandates within the portfolio.</p>`
+  },
+  bhavya: {
+    industry: "Plastic & Packaging Manufacturing",
+    title: "Bhavya Plast",
+    content: `<p>Bhavya Plast is a plastic and packaging bottle manufacturer exploring regional expansion, particularly into South Indian markets. The engagement focused on enabling structured market entry rather than opportunistic sales outreach.</p>
+    <div class="modal-role-label">Engagement Overview</div>
+    <p>My role involved supporting brand positioning, sales structuring, and market entry planning, ensuring the business approached new regions with clarity on demand drivers, customer segments, and execution readiness.</p>
+    <p>We worked on aligning marketing, lead generation, and sales efforts to support expansion objectives while maintaining operational efficiency. Emphasis was placed on building repeatable sales processes that could scale across regions.</p>
+    <p>The engagement helped Bhavya Plast adopt a more systematic expansion mindset, reducing reliance on ad-hoc growth efforts and improving confidence in entering new markets.</p>`
+  },
+  hello: {
+    industry: "Digital Media, Fitness & Lifestyle",
+    title: "Hello Fitness Magazine",
+    content: `<p>Hello Fitness Magazine operates at the intersection of digital content, lifestyle branding, and local media monetisation — with an online presence and a weekly offline tabloid (The Grind) distributed across Surat. The core challenge was transitioning from opportunistic advertising sales to a structured, scalable commercial model without diluting editorial credibility.</p>
+    <div class="modal-role-label">Engagement Overview</div>
+    <p>The engagement started with a deep dive into the brand's content positioning, audience demographics, advertiser profiles, and existing revenue streams. While the magazine had strong local recall and engagement, revenue generation was inconsistent and heavily dependent on individual sales efforts rather than repeatable systems.</p>
+    <p>My role involved designing a commercial growth framework that aligned content, media buying, and sales execution — structuring advertiser offerings, refining pricing logic, and building a predictable lead-to-closure process for both digital and print inventory.</p>
+    <p>Team management and capability building were critical. Sales teams were trained to move from transactional selling to consultative advertiser conversations. Performance metrics were introduced to track pipeline health, advertiser retention, and campaign effectiveness. By integrating brand building with revenue discipline, the magazine strengthened its position as a commercially viable media platform.</p>`
+  },
+  house: {
+    industry: "CCTV, Home Automation & Security Solutions",
+    title: "House of Connect",
+    content: `<p>House of Connect is a fast-growing CCTV and home automation brand recording 100% year-on-year growth. Rapid scaling brought challenges related to execution consistency, sales alignment, and performance visibility.</p>
+    <div class="modal-role-label">Engagement Overview</div>
+    <p>My role involved working on the growth architecture of the business — aligning demand generation, sales processes, and team execution to sustain scale without operational chaos. The engagement focused on introducing structure while preserving growth momentum.</p>
+    <p>Key initiatives included sales process design, lead qualification frameworks, and performance tracking, ensuring marketing efforts directly supported commercial outcomes. Team alignment and execution discipline were prioritised to reduce friction between demand generation and on-ground sales closure.</p>
+    <p>The outcome was a more system-driven growth model, allowing the business to continue scaling rapidly while improving predictability, accountability, and internal clarity.</p>`
+  },
+  kiran: {
+    industry: "Solar EPC",
+    title: "Kiran Solar",
+    content: `<p>Kiran Solar is a solar EPC company operating in a highly competitive, lead-driven renewable energy market. The engagement focuses on ensuring that digital activity contributes directly to commercial outcomes — not just visibility.</p>
+    <div class="modal-role-label">Engagement Overview</div>
+    <p>My role involves supporting digital brand presence and performance-led demand generation, with emphasis on lead quality, funnel efficiency, and conversion alignment with on-ground sales teams. Campaign strategy is designed around intent, geography, and project feasibility rather than raw lead volume.</p>
+    <p>The engagement is structured to ensure marketing-to-sales alignment, performance tracking, and continuous optimisation. The objective is to build a demand engine that supports sustainable project acquisition and predictable growth.</p>`
+  },
+  macwin: {
+    industry: "Solar Panel Manufacturing",
+    title: "Macwin Solar Energy Pvt. Ltd.",
+    content: `<p>Macwin Solar Energy operates in a highly competitive solar manufacturing ecosystem where differentiation is difficult, pricing pressure is constant, and demand cycles are closely tied to policy, financing, and installer networks. The engagement began with a comprehensive business and market diagnostic to understand brand perception, channel effectiveness, sales process maturity, and competitive positioning within the solar value chain.</p>
+    <div class="modal-role-label">Engagement Overview</div>
+    <p>The primary challenge was not lead volume but conversion efficiency and sales scalability. The brand had strong technical capability but lacked a structured go-to-market narrative and a disciplined revenue engine. My role involved repositioning the brand, strengthening market credibility, and aligning marketing, sales, and internal teams around a unified growth strategy.</p>
+    <p>We worked on market research and segmentation, identifying high-intent customer clusters and regional demand patterns. Based on this, I helped design a performance-driven demand generation framework focused on lead quality rather than volume. Sales workflows were streamlined to improve follow-ups, qualification discipline, and deal closure rates.</p>
+    <p>Team structuring and performance tracking were key components of the engagement — aligning sales and marketing teams around clear KPIs, accountability structures, and execution cadence. This engagement helped Macwin move from fragmented growth efforts to a more predictable, system-led revenue approach.</p>`
+  },
+  mnicubs: {
+    industry: "Toys & Baby Products (Manufacturing + D2C)",
+    title: "Mnicubs Baby Products LLP",
+    content: `<p>Mnicubs is a ride-on toy brand with a growing national presence across online channels and multiple Indian states. The engagement focused on helping the brand scale demand and execution systems while managing the operational complexity of a manufacturing-led consumer business.</p>
+    <div class="modal-role-label">Engagement Overview</div>
+    <p>The initial phase involved reviewing brand positioning, sales channels, and performance marketing effectiveness. While demand existed, growth efforts lacked consistency across regions and platforms. My role involved strengthening the revenue engine by aligning brand communication, demand generation, and sales execution.</p>
+    <p>We worked on performance-led growth strategy, sales enablement, and team structuring to reduce founder dependency and improve execution maturity. Clear KPIs and performance tracking mechanisms were introduced to ensure that growth initiatives translated into predictable outcomes rather than sporadic spikes.</p>
+    <p>The engagement also supported market expansion planning, helping the brand prioritise geographies and channels based on unit economics and operational readiness — enabling Mnicubs to scale as a structured consumer brand, not just a product-led business.</p>`
+  },
+  rms: {
+    industry: "Industrial Machinery & Lifting Equipment",
+    title: "RMS Engineers",
+    content: `<p>RMS Engineers is a lifting equipment and machinery manufacturer with pan-India sales operations and warehouses in Bangalore, Surat, and New Delhi. The engagement focused on brand strengthening and regional market expansion, particularly in complex B2B environments.</p>
+    <div class="modal-role-label">Engagement Overview</div>
+    <p>The work began with a review of market presence, sales strategy, and regional performance differences. While the business had strong technical capabilities, growth across regions required more structured market prioritisation and execution alignment.</p>
+    <p>I supported the design of regional expansion strategy, sales structuring, and demand-generation alignment to ensure consistent messaging and execution across geographies. The focus was on enabling scale while managing operational complexity inherent to industrial businesses.</p>
+    <p>This engagement helped RMS move toward a more coordinated and execution-led expansion approach, supporting growth across multiple regions without diluting operational control.</p>`
+  }
+};
+
+// ─── SCROLL PROGRESS ───────────────────────────────────────────
+const progressBar = document.getElementById('scroll-progress');
+function updateProgress() {
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  progressBar.style.width = pct + '%';
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+
+// ─── CUSTOM CURSOR ─────────────────────────────────────────────
+const dot = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mouseX = -100, mouseY = -100;
+let ringX = -100, ringY = -100;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px';
+});
+
+// Smooth ring follow
+function animateRing() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+// Cursor states on interactive elements
+document.querySelectorAll('a, button, .project-card, .filter-btn, .contact-link, .company-logo, .pc-image, .profile-photo-placeholder, .hero-avatar, .modal-logo').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+});
+document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
+document.addEventListener('mouseup', () => document.body.classList.remove('cursor-click'));
+
+// ─── SCROLL REVEAL (IntersectionObserver) ──────────────────────
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      // Add in-view to section-header to trigger line animation
+      if (entry.target.classList.contains('section-header')) {
+        entry.target.classList.add('in-view');
+      }
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .section-header').forEach(el => {
+  revealObserver.observe(el);
+});
+
+// Stagger exp-items on reveal
+const expItems = document.querySelectorAll('.exp-item');
+expItems.forEach((item, i) => {
+  item.style.opacity = '0';
+  item.style.transform = 'translateY(20px)';
+  item.style.transition = `opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s`;
+});
+const expObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      expItems.forEach(item => {
+        item.style.opacity = '1';
+        item.style.transform = 'none';
+      });
+      expObserver.disconnect();
+    }
+  });
+}, { threshold: 0.1 });
+if (expItems[0]) expObserver.observe(expItems[0]);
+
+// ─── HERO PARALLAX ON SCROLL ───────────────────────────────────
+const heroRight = document.querySelector('.hero-right');
+const heroOrb1 = document.querySelector('.hero-orb-1');
+const heroOrb2 = document.querySelector('.hero-orb-2');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (heroRight) heroRight.style.transform = `translateY(${y * 0.12}px)`;
+  if (heroOrb1) heroOrb1.style.transform = `translate(${y * 0.06}px, ${-y * 0.08}px)`;
+  if (heroOrb2) heroOrb2.style.transform = `translate(${-y * 0.04}px, ${y * 0.05}px)`;
+}, { passive: true });
+
+// ─── POINTER-INTERACTIVE BACKGROUND (hero section) ─────────────
+const hero = document.querySelector('.hero');
+const mesh = document.querySelector('.hero-mesh');
+let heroRect = hero ? hero.getBoundingClientRect() : null;
+
+window.addEventListener('resize', () => { heroRect = hero ? hero.getBoundingClientRect() : null; });
+
+document.addEventListener('mousemove', e => {
+  if (!mesh || !hero) return;
+  const rect = hero.getBoundingClientRect();
+  const relX = (e.clientX - rect.left) / rect.width;
+  const relY = (e.clientY - rect.top) / rect.height;
+  if (relX < 0 || relX > 1 || relY < 0 || relY > 1) return;
+  mesh.style.background = `
+    radial-gradient(ellipse 50% 45% at ${relX * 100}% ${relY * 100}%, rgba(201,168,76,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at ${(1-relX)*100}% ${(1-relY)*100}%, rgba(42,31,14,0.06) 0%, transparent 55%)
+  `;
+});
+
+// ─── POINTER-INTERACTIVE GLOW on project cards ─────────────────
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width / 2, cy = rect.height / 2;
+    const rotX = ((y - cy) / cy) * 5;
+    const rotY = ((x - cx) / cx) * -5;
+    card.style.transform = `translateY(-8px) scale(1.01) perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    card.style.setProperty('--glow-x', x + 'px');
+    card.style.setProperty('--glow-y', y + 'px');
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+// ─── ANIMATED NUMBER COUNTER ───────────────────────────────────
+function animateCount(el, target, duration = 1400) {
+  let start = null;
+  const step = ts => {
+    if (!start) start = ts;
+    const progress = Math.min((ts - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(ease * target) + (progress < 1 ? '' : '+');
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target + '+';
+  };
+  requestAnimationFrame(step);
+}
+
+const numEl = document.querySelector('.card-big .num');
+const statNum = document.querySelector('.floating-stat .s-num');
+let counted = false;
+const counterObserver = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting && !counted) {
+    counted = true;
+    if (numEl) animateCount(numEl, 34);
+    if (statNum) animateCount(statNum, 7);
+  }
+}, { threshold: 0.5 });
+if (numEl) counterObserver.observe(numEl);
+
+// ─── CONTACT FLOATING PARTICLES ────────────────────────────────
+const contactParticles = document.getElementById('contact-particles');
+if (contactParticles) {
+  for (let i = 0; i < 14; i++) {
+    const p = document.createElement('div');
+    p.className = 'contact-particle';
+    const size = 4 + Math.random() * 10;
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}%;
+      bottom:${-size}px;
+      animation-duration:${8 + Math.random()*12}s;
+      animation-delay:${Math.random()*10}s;
+    `;
+    contactParticles.appendChild(p);
+  }
+}
+
+// ─── MAGNETIC POINTER EFFECT on contact section ────────────────
+const contactSection = document.querySelector('.contact');
+if (contactSection) {
+  contactSection.addEventListener('mousemove', e => {
+    const rect = contactSection.getBoundingClientRect();
+    const relX = (e.clientX - rect.left) / rect.width;
+    const relY = (e.clientY - rect.top) / rect.height;
+    contactSection.style.background = `
+      radial-gradient(ellipse 60% 60% at ${relX*100}% ${relY*100}%, #3a2a10 0%, #2a1f0e 60%)
+    `;
+  });
+  contactSection.addEventListener('mouseleave', () => {
+    contactSection.style.background = '';
+  });
+}
+
+// ─── HEADER SHRINK ON SCROLL ───────────────────────────────────
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    header.style.padding = '0.9rem 3rem';
+    header.style.borderBottomColor = 'rgba(201,168,76,0.3)';
+  } else {
+    header.style.padding = '1.5rem 3rem';
+    header.style.borderBottomColor = 'rgba(201,168,76,0.2)';
+  }
+}, { passive: true });
+
+// ─── ACTIVE NAV HIGHLIGHT on scroll ───────────────────────────
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--gold)' : '';
+  });
+}, { passive: true });
+
+// ─── SKILL ITEM stagger reveal ─────────────────────────────────
+const skillItems = document.querySelectorAll('.skill-item');
+skillItems.forEach((item, i) => {
+  item.style.opacity = '0';
+  item.style.transform = 'translateX(20px)';
+  item.style.transition = `opacity 0.5s ease ${i * 0.08}s, transform 0.5s ease ${i * 0.08}s, border-color 0.3s, box-shadow 0.3s`;
+});
+const skillObserver = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) {
+    skillItems.forEach(item => {
+      item.style.opacity = '1';
+      item.style.transform = 'none';
+    });
+    skillObserver.disconnect();
+  }
+}, { threshold: 0.1 });
+if (skillItems[0]) skillObserver.observe(skillItems[0]);
+
+// ─── PAGE LOAD FADE IN ─────────────────────────────────────────
+document.body.style.opacity = '0';
+document.body.style.transition = 'opacity 0.5s ease';
+window.addEventListener('load', () => {
+  document.body.style.opacity = '1';
+  document.querySelectorAll('[data-storage-key]').forEach(container => {
+    const key = container.dataset.storageKey;
+    if (!key) return;
+    let saved = '';
+    try { saved = localStorage.getItem('uploaded-image:' + key) || ''; } catch (_) {}
+    if (!saved) return;
+    let img = container.querySelector('img');
+    if (!img) { img = document.createElement('img'); container.appendChild(img); }
+    img.src = saved;
+    container.classList.add('has-image');
+    container.querySelectorAll('svg, .ph-label, .ph-sub, .pc-img-label').forEach(el => el.style.display = 'none');
+  });
+});
+
+function triggerUpload(el) {
+  el.querySelector('input[type="file"]').click();
+}
+
+function previewImage(input, container) {
+  if (!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    let img = container.querySelector('img');
+    if (!img) { img = document.createElement('img'); container.appendChild(img); }
+    img.src = e.target.result;
+    container.classList.add('has-image');
+    const key = container.dataset.storageKey;
+    if (key) {
+      try { localStorage.setItem(`uploaded-image:${key}`, e.target.result); } catch (_) {}
+    }
+    container.querySelectorAll('svg, .ph-label, .ph-sub, .pc-img-label').forEach(el => el.style.display = 'none');
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+function previewCardImage(input) {
+  const container = input.closest('.pc-image');
+  previewImage(input, container);
+}
+
+const projectLogos = {
+  bhim: 'bhim-logo.png',
+  bhavya: 'bhavya-logo.png',
+  hello: 'hello-fitness-logo.png',
+  house: 'house-logo.png',
+  kiran: 'kiran-logo.png',
+  macwin: 'macwin-logo.png',
+  mnicubs: 'mnicubs-logo.png',
+  rms: 'rms-logo.png'
+};
+function openModal(id) {
+  const p = projects[id];
+  document.getElementById('modalIndustry').textContent = p.industry;
+  document.getElementById('modalTitle').textContent = p.title;
+  document.getElementById('modalBody').innerHTML = p.content;
+
+  const modalLogo = document.getElementById('modalLogo');
+  const logoSrc = projectLogos[id] || '';
+  if (modalLogo) {
+    modalLogo.innerHTML = logoSrc
+      ? `<img src="${logoSrc}" alt="${p.title} logo">`
+      : `<svg viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9z"/></svg>`;
+  }
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOnOverlay(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    const filter = this.dataset.filter;
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+    });
+  });
+});
+// ═══════════════════════════════════════════════════════════════
+// POINTER FLOW — particles born only from cursor, nowhere else
+// ═══════════════════════════════════════════════════════════════
+(function () {
+  const canvas = document.getElementById('flow-canvas');
+  const ctx    = canvas.getContext('2d');
+
+  let W, H;
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // ── Pointer state ────────────────────────────────────────────
+  let mx = -999, my = -999, pmx = -999, pmy = -999;
+  let velX = 0, velY = 0;
+  let active = false;
+  let idleTimer;
+
+  window.addEventListener('mousemove', e => {
+    pmx = mx; pmy = my;
+    mx = e.clientX; my = e.clientY;
+    velX = mx - pmx;
+    velY = my - pmy;
+    active = true;
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => { active = false; }, 80);
+  });
+
+  // ── Particle class ────────────────────────────────────────────
+  const PALETTE = [
+    [201, 168,  76, 0.7],   // gold
+    [230, 195, 110, 0.5],   // pale gold
+    [180, 140,  55, 0.6],   // amber
+    [247, 220, 140, 0.45],  // cream gold
+    [160, 118,  45, 0.55],  // bronze
+  ];
+
+  const particles = [];
+  const MAX = 180;
+
+  class Particle {
+    constructor() { this.init(); }
+
+    init() {
+      // Born at cursor with tiny jitter
+      const jitter = 6;
+      this.x  = mx + (Math.random() - .5) * jitter;
+      this.y  = my + (Math.random() - .5) * jitter;
+      this.px = this.x;
+      this.py = this.y;
+
+      // Inherit cursor velocity + random fan spread
+      const speed   = 1.4 + Math.random() * 2.6;
+      const cursorMag = Math.sqrt(velX * velX + velY * velY) || 1;
+      const baseAngle = Math.atan2(velY, velX);
+      const spread    = (Math.random() - .5) * 1.3;   // ±75° spread
+      const angle     = baseAngle + spread;
+
+      this.vx = (Math.cos(angle) * speed * 0.5) + (velX / cursorMag) * speed * 0.5;
+      this.vy = (Math.sin(angle) * speed * 0.5) + (velY / cursorMag) * speed * 0.5;
+
+      // Curl — each particle slowly rotates its direction
+      this.curl  = (Math.random() - .5) * 0.055;
+      this.drag  = 0.93 + Math.random() * 0.045;
+
+      // Life
+      this.life  = 0;
+      this.maxLife = 60 + Math.random() * 90;
+
+      // Visual
+      const c      = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+      this.r = c[0]; this.g = c[1]; this.b = c[2]; this.baseA = c[3];
+      this.width   = 0.8 + Math.random() * 2.0;
+    }
+
+    update() {
+      this.life++;
+      // Rotate velocity vector (curl)
+      const cos = Math.cos(this.curl), sin = Math.sin(this.curl);
+      const nvx = this.vx * cos - this.vy * sin;
+      const nvy = this.vx * sin + this.vy * cos;
+      this.vx = nvx * this.drag;
+      this.vy = nvy * this.drag;
+
+      this.px = this.x;
+      this.py = this.y;
+      this.x += this.vx;
+      this.y += this.vy;
+    }
+
+    draw() {
+      const t = this.life / this.maxLife;
+      // Bell-curve alpha: fade in fast, linger, fade out
+      const alpha = this.baseA * Math.pow(Math.sin(t * Math.PI), 0.6);
+
+      ctx.beginPath();
+      ctx.moveTo(this.px, this.py);
+      ctx.lineTo(this.x,  this.y);
+      ctx.strokeStyle = `rgba(${this.r},${this.g},${this.b},${alpha.toFixed(3)})`;
+      ctx.lineWidth   = this.width * (1 - t * 0.6);
+      ctx.lineCap     = 'round';
+      ctx.stroke();
+    }
+
+    dead() {
+      return this.life >= this.maxLife
+          || this.x < -60 || this.x > W + 60
+          || this.y < -60 || this.y > H + 60;
+    }
+  }
+
+  // ── Click burst ───────────────────────────────────────────────
+  window.addEventListener('click', e => {
+    mx = e.clientX; my = e.clientY;
+    for (let i = 0; i < 22; i++) {
+      if (particles.length >= MAX + 30) break;
+      const a = (i / 22) * Math.PI * 2;
+      const p = new Particle();
+      p.vx = Math.cos(a) * (2 + Math.random() * 3);
+      p.vy = Math.sin(a) * (2 + Math.random() * 3);
+      p.curl = (Math.random() - .5) * 0.08;
+      p.maxLife = 50 + Math.random() * 60;
+      p.width = 1.2 + Math.random() * 1.8;
+      particles.push(p);
+    }
+  });
+
+  // ── Spawn rate ────────────────────────────────────────────────
+  let spawnAcc = 0;
+  function spawnBatch() {
+    if (!active) return;
+    const speed   = Math.sqrt(velX * velX + velY * velY);
+    const count   = Math.min(4, Math.floor(speed * 0.35 + 1));
+    spawnAcc += count;
+    while (spawnAcc >= 1 && particles.length < MAX) {
+      particles.push(new Particle());
+      spawnAcc--;
+    }
+  }
+
+  // ── Clear canvas each frame (no trails) ──────────────────────
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+
+    spawnBatch();
+
+    for (let i = particles.length - 1; i >= 0; i--) {
+      particles[i].update();
+      particles[i].draw();
+      if (particles[i].dead()) particles.splice(i, 1);
+    }
+
+    requestAnimationFrame(loop);
+  }
+
+  loop();
+})();
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
